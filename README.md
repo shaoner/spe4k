@@ -10,6 +10,7 @@ For now, only the IRC part works:
 * Identities
 
 If you want to join this project as a developer, feel free to contact me by e-mail (shaoner@gmail.com)
+Or better, connect to irc.spe4k.com:6667
 
 ## Build
 
