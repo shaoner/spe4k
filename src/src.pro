@@ -64,7 +64,6 @@ FORMS += ui/channel-window.ui \
          ui/main-window.ui \
          ui/network-dialog.ui \
          ui/option-dialog.ui \
-         ui/session-area.ui \
          ui/sessionlist-dialog.ui \
          ui/status-window.ui \
          ui/text-box.ui \
