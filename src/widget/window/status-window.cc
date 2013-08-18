@@ -24,7 +24,6 @@
  * \author shaoner
  * \brief Status window to get server information
  */
-
 #include "status-window.hh"
 
 #include <QCloseEvent>
@@ -78,17 +77,17 @@ StatusWindow::raw_slot(irc::RawEvent& event)
 void
 StatusWindow::connecting_slot()
 {
-	display_info("Connecting to " + session.hostname() + "...");
+	display_info(tr("Connecting to ") + session.hostname() + "...");
 }
 
 void
 StatusWindow::connect_slot()
 {
-	display_info("Connection etablished (" + session.hostname() + ":" + QString::number(session.port()) + ")");
+	display_info(tr("Connection etablished (") + session.hostname() + ":" + QString::number(session.port()) + ")");
 }
 
 void
 StatusWindow::disconnect_slot()
 {
-	display_info("Disconnected");
+	display_info(tr("Disconnected"));
 }

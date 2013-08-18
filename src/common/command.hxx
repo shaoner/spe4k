@@ -30,6 +30,7 @@
 
 # include "command.hh"
 
+# include <QObject>
 # include <QStringList>
 # include <session.hh>
 
@@ -77,7 +78,7 @@ Command::help(Window* win)
 inline
 CommandAction::CommandAction() :
 	Command("ME", "<message>",
-			"Send an action message to the current window (except status)")
+			QObject::tr("Send an action message to the current window (except status)"))
 {
 }
 
@@ -109,14 +110,14 @@ CommandAction::process(StatusWindow* win, QStringList& args)
 inline
 CommandAdmin::CommandAdmin() :
 	Command("ADMIN", "[<server>]",
-			"Get the name of the administrators of the given server", 0)
+			QObject::tr("Get the name of the administrators of the given server"), 0)
 {
 }
 
 inline
 CommandAway::CommandAway() :
 	Command("AWAY", "[<message>]",
-			"Set or reset auto reply")
+			QObject::tr("Set or reset auto reply"))
 {
 }
 
@@ -132,7 +133,7 @@ CommandAway::process(Window* win, QStringList& args)
 
 inline
 CommandClear::CommandClear() :
-	Command("CLEAR", "", "Clear the current screen")
+	Command("CLEAR", "", QObject::tr("Clear the current screen"))
 {
 }
 
@@ -147,7 +148,7 @@ CommandClear::process(Window* win, QStringList& args)
 inline
 CommandCleartopic::CommandCleartopic() :
 	Command("CLEARTOPIC", "[<channel>]",
-			"Clear the topic of <channel>")
+			QObject::tr("Clear the topic of <channel>"))
 {
 }
 
@@ -167,20 +168,20 @@ CommandCleartopic::process(Window* win, QStringList& args)
 inline
 CommandConnect::CommandConnect() :
 	Command("CONNECT", "<server> <port> [<remote>]",
-			"Make a server to try to establish a new connection to another server", 2)
+			QObject::tr("Make a server to try to establish a new connection to another server"), 2)
 {
 }
 
 inline
 CommandDie::CommandDie() :
 	Command("DIE", "",
-			"Shutdown the server", 0)
+			QObject::tr("Shutdown the server"), 0)
 {
 }
 
 inline
 CommandEcho::CommandEcho() :
-	Command("ECHO", "[<text>]", "Display text on the current window")
+	Command("ECHO", "[<text>]", QObject::tr("Display text on the current window"))
 {
 }
 
@@ -197,7 +198,7 @@ CommandEcho::process(Window* win, QStringList& args)
 inline
 CommandHelp::CommandHelp(const QHash<QString, Command*>& cmdMap) :
 	Command("HELP", "[<command>]",
-			"List all commands or display help for specific commands"),
+			QObject::tr("List all commands or display help for specific commands")),
 	_cmdMap(cmdMap)
 {
 }
@@ -216,7 +217,7 @@ CommandHelp::process(Window* win, QStringList& args)
 	}
 	else
 	{
-		win->display_info("Available internal commands:");
+		win->display_info(QObject::tr("Available internal commands:"));
 		QStringList keys = _cmdMap.keys();
 		keys.sort();
 		foreach (QString cmd, keys)
@@ -231,7 +232,7 @@ CommandHelp::process(Window* win, QStringList& args)
 
 inline
 CommandHop::CommandHop() :
-	Command("HOP", "[<channel>{,<channel>}]", "Leave and enter channel")
+	Command("HOP", "[<channel>{,<channel>}]", QObject::tr("Leave and enter channel"))
 {
 }
 
@@ -256,14 +257,14 @@ CommandHop::process(Window* win, QStringList& args)
 inline
 CommandInfo::CommandInfo() :
 	Command("INFO", "[<server>]",
-			"Get information describing the server", 0)
+			QObject::tr("Get information describing the server"), 0)
 {
 }
 
 inline
 CommandInvite::CommandInvite() :
 	Command("INVITE", "<nick> [<channel>]",
-			"Send an invitation to a user to join a channel")
+			QObject::tr("Send an invitation to a user to join a channel"))
 {
 }
 
@@ -286,7 +287,7 @@ CommandInvite::process(Window* win, QStringList& args)
 inline
 CommandJoin::CommandJoin() :
 	Command("JOIN", "[<channel>{,<channel>} [<key>{,<key>}]]",
-			"Enter channels")
+			QObject::tr("Enter channels"))
 {
 }
 
@@ -315,7 +316,7 @@ CommandJoin::process(Window* win, QStringList& args)
 inline
 CommandKick::CommandKick() :
 	Command("KICK", "[<channel>] <nick>{,<nick>} [<reason>]",
-			"For a user to leave a channel")
+			QObject::tr("Force a user to leave a channel"))
 {
 }
 
@@ -353,42 +354,42 @@ CommandKick::process(Window* win, QStringList& args)
 inline
 CommandKill::CommandKill() :
 	Command("KILL", "<nick> <reason>",
-			"Force a user to leave the server", 2)
+			QObject::tr("Force a user to leave the server"), 2)
 {
 }
 
 inline
 CommandKnock::CommandKnock() :
 	Command("KNOCK", "<channel> [<reason>]",
-			"Ask an invitation to enter a channel", 1)
+			QObject::tr("Ask an invitation to enter a channel"), 1)
 {
 }
 
 inline
 CommandLinks::CommandLinks() :
 	Command("LINKS", "[<server> [<mask>]]",
-			"List servers which are linked together", 0)
+			QObject::tr("List servers which are linked together"), 0)
 {
 }
 
 inline
 CommandList::CommandList() :
 	Command("LIST", "[<channel> [<server>]]",
-			"List channels and their topic", 0)
+			QObject::tr("List channels and their topic"), 0)
 {
 }
 
 inline
 CommandLusers::CommandLusers() :
 	Command("LUSERS", "[<mask> [<server>]]",
-			"Get statistics about users on the network", 0)
+			QObject::tr("Get statistics about users on the network"), 0)
 {
 }
 
 inline
 CommandMode::CommandMode() :
 	Command("MODE", "[<target>] [<modes> {<mode-parameters>}]",
-			"Sets mode to the target, that can be a channel or yourself")
+			QObject::tr("Sets mode to the target, that can be a channel or yourself"))
 {
 }
 
@@ -433,14 +434,14 @@ CommandMode::process(Window* win, QStringList& args)
 inline
 CommandMotd::CommandMotd() :
 	Command("MOTD", "[<server>]",
-			"Get the Message Of The Day", 0)
+			QObject::tr("Get the Message Of The Day"), 0)
 {
 }
 
 inline
 CommandMsg::CommandMsg() :
 	Command("MSG", "<target> <message>",
-			"Send a raw message to the target (a nick or a channel)")
+			QObject::tr("Send a raw message to the target (a nick or a channel)"))
 {
 }
 
@@ -462,13 +463,13 @@ CommandMsg::process(Window* win, QStringList& args)
 inline
 CommandNames::CommandNames() :
 	Command("NAMES", "[<channel>{,<channel>}]",
-			"List nicknames for <channel>", 0)
+			QObject::tr("List nicknames for <channel>"), 0)
 {
 }
 
 inline
 CommandNick::CommandNick() :
-	Command("NICK", "<new-nick>", "Change your nickname")
+	Command("NICK", "<new-nick>", QObject::tr("Change your nickname"))
 {
 }
 
@@ -487,7 +488,7 @@ CommandNick::process(Window* win, QStringList& args)
 inline
 CommandNotice::CommandNotice() :
 	Command("NOTICE", "<target>{,<target>} <message>",
-			"Send a notice message to the target")
+			QObject::tr("Send a notice message to the target"))
 {
 }
 
@@ -511,14 +512,14 @@ CommandNotice::process(Window* win, QStringList& args)
 inline
 CommandOper::CommandOper() :
 	Command("OPER", "<login> <password>",
-			"Obtain IRC Operator privileges", 2)
+			QObject::tr("Obtain IRC Operator privileges"), 2)
 {
 }
 
 inline
 CommandPart::CommandPart() :
 	Command("PART", "[<channel>{,<channel>} [<reason>]]",
-			"Leave channels")
+			QObject::tr("Leave channels"))
 {
 }
 
@@ -550,14 +551,14 @@ CommandPart::process(Window* win, QStringList& args)
 inline
 CommandQuit::CommandQuit() :
 	Command("QUIT", "[<reason>]",
-			"Leave the server", 0)
+			QObject::tr("Leave the server"), 0)
 {
 }
 
 inline
 CommandQuote::CommandQuote() :
 	Command("QUOTE", "<command> [<command-args>]",
-			"Send raw irc command to the server", 1)
+			QObject::tr("Send raw irc command to the server"), 1)
 
 {
 }
@@ -576,7 +577,7 @@ CommandQuote::process(Window* win, QStringList& args)
 inline
 CommandReconnect::CommandReconnect() :
 	Command("RECONNECT", "",
-			"Reconnection to the server")
+			QObject::tr("Reconnection to the server"))
 {
 }
 
@@ -593,21 +594,21 @@ CommandReconnect::process(Window* win, QStringList& args)
 inline
 CommandRehash::CommandRehash() :
 	Command("REHASH", "",
-			"Reload server configuration", 0)
+			QObject::tr("Reload server configuration"), 0)
 {
 }
 
 inline
 CommandRestart::CommandRestart() :
 	Command("RESTART", "",
-			"Restart the server", 0)
+			QObject::tr("Restart the server"), 0)
 {
 }
 
 inline
 CommandServer::CommandServer() :
 	Command("SERVER", "hostname[:port] [password]",
-			"Connect to the server at the given address")
+			QObject::tr("Connect to the server at the given address"))
 {
 }
 
@@ -641,28 +642,28 @@ CommandServer::process(Window* win, QStringList& args)
 inline
 CommandSquit::CommandSquit() :
 	Command("SQUIT", "<server> <comment>",
-			"Disconnect a server link", 2)
+			QObject::tr("Disconnect a server link"), 2)
 {
 }
 
 inline
 CommandStats::CommandStats() :
 	Command("STATS", "[<query> [<server>]]",
-			"Query some specific statistics", 0)
+			QObject::tr("Query some specific statistics"), 0)
 {
 }
 
 inline
 CommandTime::CommandTime() :
 	Command("TIME", "[<server>]",
-			"Get local time from the server", 0)
+			QObject::tr("Get local time from the server"), 0)
 {
 }
 
 inline
 CommandTopic::CommandTopic() :
 	Command("TOPIC", "[<channel>] [<subject>]",
-			"Set or get the topic for <channel>")
+			QObject::tr("Set or get the topic for <channel>"))
 {
 }
 
@@ -699,21 +700,21 @@ CommandTopic::process(Window* win, QStringList& args)
 inline
 CommandTrace::CommandTrace() :
 	Command("TRACE", "[<server>]",
-			"Get route to the specific server", 0)
+			QObject::tr("Get route to the specific server"), 0)
 {
 }
 
 inline
 CommandVersion::CommandVersion() :
 	Command("VERSION", "[<server>]",
-			"Get the version of the server", 0)
+			QObject::tr("Get the version of the server"), 0)
 {
 }
 
 inline
 CommandWallops::CommandWallops() :
 	Command("WALLOPS", "<message>",
-			"Send a message to all users")
+			QObject::tr("Send a message to all users"))
 {
 }
 
@@ -730,21 +731,21 @@ CommandWallops::process(Window* win, QStringList& args)
 inline
 CommandWho::CommandWho() :
 	Command("WHO", "[<mask>]",
-			"Search for a mask with search options that can be a channel, a nickname, a server, etc.", 0)
+			QObject::tr("Search for a mask with search options that can be a channel, a nickname, a server, etc."), 0)
 {
 }
 
 inline
 CommandWhois::CommandWhois() :
 	Command("WHOIS", "<nick>{,<nick>}",
-			"Ask for information about nick to the server", 1)
+			QObject::tr("Ask for information about nick to the server"), 1)
 {
 }
 
 inline
 CommandWhowas::CommandWhowas() :
 	Command("WHOWAS", "<nick>{,<nick>} [count [target]]",
-			"Ask for information about nick which may no longer exist", 1)
+			QObject::tr("Ask for information about nick which may no longer exist"), 1)
 {
 }
 

@@ -117,7 +117,7 @@ UserWindow::quit_slot(irc::CommandEvent& event, const QString& reason)
 void
 UserWindow::disconnect_slot()
 {
-	display_info("Disconnected");
+	display_info(tr("Disconnected"));
 }
 
 void

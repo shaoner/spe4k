@@ -22,9 +22,8 @@
 /*!
  * \file network-tree-item.hh
  * \author shaoner
- * \brief
+ * \brief Network item in the session list tree
  */
-
 #ifndef NETWORK_ITEM_HH
 # define NETWORK_ITEM_HH
 

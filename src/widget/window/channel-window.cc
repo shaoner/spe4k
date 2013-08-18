@@ -454,7 +454,7 @@ ChannelWindow::connect_slot()
 void
 ChannelWindow::disconnect_slot()
 {
-	display_info("Disconnected");
+	display_info(tr("Disconnected"));
 	clear();
 }
 
