@@ -22,9 +22,8 @@
 /*!
  * \file network-tree-item.cc
  * \author shaoner
- * \brief
+ * \brief Network item in the session list tree
  */
-
 #include "network-tree-item.hh"
 
 NetworkTreeItem::NetworkTreeItem(const Network& network, QTreeWidget* parent) :
@@ -41,8 +40,8 @@ NetworkTreeItem::NetworkTreeItem(const Network& network, QTreeWidget* parent) :
 	_modeInvibleItem(new QTreeWidgetItem(_modeItem)),
 	_modeReceiveWallopsItem(new QTreeWidgetItem(_modeItem))
 {
-	_modeInvibleItem->setText(0, "Invisible");
-	_modeReceiveWallopsItem->setText(0, "Receive Wallops");
+	_modeInvibleItem->setText(0, QObject::tr("Invisible"));
+	_modeReceiveWallopsItem->setText(0, QObject::tr("Receive Wallops"));
 	fill_from_params(network);
 }
 
@@ -55,11 +54,11 @@ void
 NetworkTreeItem::fill_from_params(const Network& network)
 {
 	setText(0, network.session.name());
-	_addressItem->setText(0, "Address: " + network.session.hostname());
-	_portItem->setText(0, "Port: " + QString::number(network.session.port()));
+	_addressItem->setText(0, QObject::tr("Address: ") + network.session.hostname());
+	_portItem->setText(0, QObject::tr("Port: ") + QString::number(network.session.port()));
 	if (network.globalIdentity)
 	{
-		_nicknameItem->setText(0, "Use global identity");
+		_nicknameItem->setText(0, QObject::tr("Use global identity"));
 		_userItem->setHidden(true);
 		_realnameItem->setHidden(true);
 		_altnickItem->setHidden(true);
@@ -70,10 +69,10 @@ NetworkTreeItem::fill_from_params(const Network& network)
 		_realnameItem->setHidden(false);
 		_altnickItem->setHidden(false);
 
-		_nicknameItem->setText(0, "Nickname: " + network.session.nickname());
-		_userItem->setText(0, "Identd: " + network.session.user());
-		_realnameItem->setText(0, "Realname: " + network.session.realname());
-		_altnickItem->setText(0, "Alternative nicknames");
+		_nicknameItem->setText(0, QObject::tr("Nickname: ") + network.session.nickname());
+		_userItem->setText(0, QObject::tr("Identd: ") + network.session.user());
+		_realnameItem->setText(0, QObject::tr("Realname: ") + network.session.realname());
+		_altnickItem->setText(0, QObject::tr("Alternative nicknames"));
 		// Alternative nicks
 		// 1. Remove old
 		while (_altnickItem->childCount() > 0)
@@ -88,7 +87,7 @@ NetworkTreeItem::fill_from_params(const Network& network)
 		}
 	}
 	// User modes
-	_modeItem->setText(0, "User modes");
+	_modeItem->setText(0, QObject::tr("User modes"));
 	_modeItem->setDisabled(true);
 	_modeInvibleItem->setDisabled(true);
 	_modeReceiveWallopsItem->setDisabled(true);

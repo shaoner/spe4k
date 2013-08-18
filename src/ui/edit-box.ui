@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>EditBox</class>
- <widget class="QLineEdit" name="EditBox">
-  <property name="windowTitle">
-   <string>Form</string>
-  </property>
- </widget>
+ <widget class="QLineEdit" name="EditBox"/>
  <resources/>
  <connections/>
 </ui>

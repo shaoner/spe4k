@@ -227,8 +227,8 @@ SessionListDialog::on_btnRemove_clicked()
 		// Since the top level items are sets with session name
 		// this is safe for now
 		QString networkName = item->text(0);
-		if (QMessageBox::warning(this, "Remove " + networkName,
-								 "Do you want to remove network " + networkName + "?",
+		if (QMessageBox::warning(this, tr("Remove ") + networkName,
+								 tr("Do you want to remove network ") + networkName + "?",
 								 QMessageBox::No | QMessageBox::Yes) == QMessageBox::Yes)
 		{
 			_networkSettings->remove(networkName);

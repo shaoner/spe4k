@@ -68,7 +68,7 @@ SessionArea::SessionArea(QTreeWidget* tree, const irc::SessionParameters& sessio
 	subWin->setAttribute(Qt::WA_DeleteOnClose);
 	subWin->setWidget(_statusWindow);
 	addSubWindow(subWin);
-	subWin->setWindowTitle("Status " + name);
+	subWin->setWindowTitle(tr("Status ") + name);
 	// Set the new window as active
 	setActiveSubWindow(subWin);
 	// For completion
@@ -291,7 +291,7 @@ SessionArea::reconnect()
 {
 	if (_reconnectRetry >= _params->get<int>("reconnect_retry"))
 		return;
-	_statusWindow->display_info("Try reconnecting (" + QString::number(_reconnectRetry + 1) + ")");
+	_statusWindow->display_info(tr("Try reconnecting (") + QString::number(_reconnectRetry + 1) + ")");
 	if (_params->get<int>("reconnect_delay") > 0)
 	{
 		_timerReconnect.start(1000);
@@ -315,7 +315,7 @@ SessionArea::timeout_reconnect()
 		_session.start();
 	}
 	else
-		_statusWindow->display_info("Reconnecting in " + QString::number(delay - _reconnectDelay++) + "s");
+		_statusWindow->display_info(tr("Reconnecting in %n second(s)", "", delay - _reconnectDelay++));
 }
 
 void
@@ -327,14 +327,14 @@ SessionArea::error_slot(QAbstractSocket::SocketError error)
 			//_statusWindow->display_info("The remote host closed the connection");
 			break;
 		case QAbstractSocket::HostNotFoundError:
-			_statusWindow->display_info("Server host not found");
+			_statusWindow->display_info(tr("Server host not found"));
 			break;
 		case QAbstractSocket::ConnectionRefusedError:
-			_statusWindow->display_info("Connection refused.");
+			_statusWindow->display_info(tr("Connection refused."));
 			reconnect();
 			break;
 		case QAbstractSocket::SocketTimeoutError:
-			_statusWindow->display_info("Connection timeout.");
+			_statusWindow->display_info(tr("Connection timeout."));
 			reconnect();
 			break;
 		default:
