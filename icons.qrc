@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>assets/icons/plug-connect.png</file>
+        <file>assets/icons/plug-disconnect.png</file>
+        <file>assets/icons/servers-network.png</file>
+        <file>assets/icons/card-address.png</file>
+        <file>assets/icons/wrench-screwdriver.png</file>
+        <file>assets/icons/application-tile.png</file>
+        <file>assets/icons/applications-stack.png</file>
+    </qresource>
+</RCC>

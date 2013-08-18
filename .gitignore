@@ -1,0 +1,10 @@
+*.o
+*.exe
+*~
+*.a
+*.so*
+*.dll
+*.pro.user*
+Makefile
+build/
+spe4k

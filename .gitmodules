@@ -1,0 +1,3 @@
+[submodule "lib/libspe4rc"]
+	path = lib/libspe4rc
+	url = https://github.com/shaoner/libspe4rc.git
