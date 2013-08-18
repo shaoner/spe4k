@@ -48,35 +48,35 @@ class SessionArea;
 class MainWindow : public QMainWindow
 {
 
-    Q_OBJECT
+	Q_OBJECT
 
 public:
 	/// Ctor
-    explicit MainWindow(QWidget* parent = 0);
+	explicit MainWindow(QWidget* parent = 0);
 	/// Dtor
-    ~MainWindow();
+	~MainWindow();
 public:
 	/// Add a new session
-    void add_session(const irc::SessionParameters& sessionParams);
+	void add_session(const irc::SessionParameters& sessionParams);
 private slots:
 	/// Session event handlers
-    void item_active_slot(QTreeWidgetItem* item, int column);
+	void item_active_slot(QTreeWidgetItem* item, int column);
 	void active_session_slot(int index);
 	void remove_session(SessionArea* area);
-    void session_connect_slot(SessionArea* area);
-    void session_disconnect_slot(SessionArea* area);
-    /// Actions menu & toolbar
-    void on_actionTabs_toggled(bool enabled);
-    void on_actionCascade_triggered();
-    void on_actionTile_triggered();
-    void on_actionTree_toggled(bool enabled);
-    void on_actionTbConnection_triggered();
-    void on_actionServers_triggered();
-    void on_actionIdentities_triggered();
-    void on_actionOptions_triggered();
+	void session_connect_slot(SessionArea* area);
+	void session_disconnect_slot(SessionArea* area);
+	/// Actions menu & toolbar
+	void on_actionTabs_toggled(bool enabled);
+	void on_actionCascade_triggered();
+	void on_actionTile_triggered();
+	void on_actionTree_toggled(bool enabled);
+	void on_actionTbConnection_triggered();
+	void on_actionServers_triggered();
+	void on_actionIdentities_triggered();
+	void on_actionOptions_triggered();
 private:
-    Ui::MainWindow* _ui;
-    SessionListDialog* _sessionListDialog;
+	Ui::MainWindow* _ui;
+	SessionListDialog* _sessionListDialog;
 	OptionDialog* _optionDialog;
 };
 

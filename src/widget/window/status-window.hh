@@ -47,10 +47,10 @@ public:
 	~StatusWindow();
 private slots:
 	/// IRC event listeners
-    void raw_slot(irc::RawEvent& event);
-    void connecting_slot();
-    void connect_slot();
-    void disconnect_slot();
+	void raw_slot(irc::RawEvent& event);
+	void connecting_slot();
+	void connect_slot();
+	void disconnect_slot();
 private:
 	Ui::StatusWindow* _ui;
 };

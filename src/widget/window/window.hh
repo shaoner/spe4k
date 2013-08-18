@@ -48,43 +48,43 @@ class Parameters;
 class Window : public QWidget
 {
 
-    Q_OBJECT
+	Q_OBJECT
 
 public:
 	/// Ctor
-    Window(const QString& name,
+	Window(const QString& name,
 		   irc::Session& session,
 		   QWidget* parent = 0);
 	/// Dtor
-    ~Window();
+	~Window();
 public:
-    void inputFocus();
+	void inputFocus();
 	/// Display information
 	void display(const QString& text);
-    void display_event(TextDisplay& textDisplay);
-    void display_message(const QString& nick, const QString& tag, const QString& text);
-    void display_action(const QString& nick, const QString& tag, const QString& text);
-    void display_info(const QString& text);
+	void display_event(TextDisplay& textDisplay);
+	void display_message(const QString& nick, const QString& tag, const QString& text);
+	void display_action(const QString& nick, const QString& tag, const QString& text);
+	void display_info(const QString& text);
 	/// Parse IRC internal command
-    void parse_command(QString& text);
+	void parse_command(QString& text);
 	/// Clear the screen
 	void clear();
 	bool is_active() const;
-    const QString& name() const;
+	const QString& name() const;
 	WindowItem* item() const;
 public:
 	irc::Session& session;
 public slots:
 	void cmd();
-    void send(const QString& fullnick, const QString& tag);
+	void send(const QString& fullnick, const QString& tag);
 protected:
 	TextBox* _textBox;
-    QString _name;
+	QString _name;
 	Parameters* _params;
-    WindowItem* _item;
+	WindowItem* _item;
 private:
-    QList<QString> _history;
-    int _historyIdx;
+	QList<QString> _history;
+	int _historyIdx;
 };
 
 inline bool

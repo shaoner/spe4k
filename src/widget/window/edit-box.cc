@@ -33,45 +33,45 @@
 #include "common/text-display.hh"
 
 EditBox::EditBox(QWidget *parent) :
-    QLineEdit(parent),
-    _ui(new Ui::EditBox),
-    _previousTab(false),
-    _previousPos(0),
-    _previousLen(0),
+	QLineEdit(parent),
+	_ui(new Ui::EditBox),
+	_previousTab(false),
+	_previousPos(0),
+	_previousLen(0),
 	_historyIdx(0),
 	_keepBuffer(false)
 {
-    _ui->setupUi(this);
+	_ui->setupUi(this);
 	_history.append("");
 	connect(this, SIGNAL(returnPressed()), this, SLOT(entered_slot()));
 }
 
 EditBox::~EditBox()
 {
-    delete _ui;
+	delete _ui;
 }
 
 void
 EditBox::keyPressEvent(QKeyEvent* event)
 {
-    if (event->key() == Qt::Key_Tab)
-    {
-        if (!_previousTab)
-        {
-            QString line = text();
-            int end = cursorPosition();
-            if (!end)
-                return;
-            int start = end - 1;
-            for (; start >= 0 && line[start] != ' '; --start);
-            if (start)
-                ++start;
-             _previousPos = start;
-             _previousLen = end - start + 1;
-        }
-        emit onTabKey(_previousTab, _previousPos, _previousLen);
-        _previousTab = true;
-    }
+	if (event->key() == Qt::Key_Tab)
+	{
+		if (!_previousTab)
+		{
+			QString line = text();
+			int end = cursorPosition();
+			if (!end)
+				return;
+			int start = end - 1;
+			for (; start >= 0 && line[start] != ' '; --start);
+			if (start)
+				++start;
+			 _previousPos = start;
+			 _previousLen = end - start + 1;
+		}
+		emit onTabKey(_previousTab, _previousPos, _previousLen);
+		_previousTab = true;
+	}
 	else if (event->key() == Qt::Key_Up)
 	{
 		// Save current text in the history
@@ -112,24 +112,24 @@ EditBox::keyPressEvent(QKeyEvent* event)
 		clear();
 		setText(_history[_historyIdx]);
 	}
-    else if ((event->modifiers().testFlag(Qt::MetaModifier)) && (event->key() == Qt::Key_C))
-    {
+	else if ((event->modifiers().testFlag(Qt::MetaModifier)) && (event->key() == Qt::Key_C))
+	{
 		/*
 		 * TODO: Insert a special character that stands for a color character.
 		 */
-    }
-    else if ((event->key() == Qt::Key_Return) || (event->key() == Qt::Key_Enter))
-    {
-        // Necessary because of commands that delete the parent window
-        // If the parent window is destroyed then this is destroyed
-        // And it makes keypressEvent to crash
-        emit returnPressed();
-    }
-    else
-    {
-        QLineEdit::keyPressEvent(event);
-        _previousTab = false;
-    }
+	}
+	else if ((event->key() == Qt::Key_Return) || (event->key() == Qt::Key_Enter))
+	{
+		// Necessary because of commands that delete the parent window
+		// If the parent window is destroyed then this is destroyed
+		// And it makes keypressEvent to crash
+		emit returnPressed();
+	}
+	else
+	{
+		QLineEdit::keyPressEvent(event);
+		_previousTab = false;
+	}
 }
 
 void

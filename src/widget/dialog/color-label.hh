@@ -5,23 +5,23 @@
 
 namespace Ui
 {
-    class ColorLabel;
+	class ColorLabel;
 } // namespace Ui
 
 class ColorLabel : public QLabel
 {
 
-    Q_OBJECT
-    
+	Q_OBJECT
+
 public:
-    explicit ColorLabel(int num, QWidget* parent = 0);
-    ~ColorLabel();
+	explicit ColorLabel(int num, QWidget* parent = 0);
+	~ColorLabel();
 protected:
-    void mouseReleaseEvent(QMouseEvent* event);
+	void mouseReleaseEvent(QMouseEvent* event);
 private:
-    Ui::ColorLabel* _ui;
-    int _code;
-    QColor _color;
+	Ui::ColorLabel* _ui;
+	int _code;
+	QColor _color;
 
 };
 

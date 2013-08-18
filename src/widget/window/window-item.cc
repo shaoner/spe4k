@@ -28,7 +28,7 @@
 #include "window-item.hh"
 
 WindowItem::WindowItem(const QString& name) :
-    _level(LIGHT_LVL_NONE)
+	_level(LIGHT_LVL_NONE)
 {
 	setText(0, name);
 }
@@ -54,7 +54,7 @@ WindowItem::set_level(LightLevel level)
 void
 WindowItem::reset_level()
 {
-    _level = LIGHT_LVL_NONE;
-    QColor col = Parameters::get()->levelColor(_level);
+	_level = LIGHT_LVL_NONE;
+	QColor col = Parameters::get()->levelColor(_level);
 	setTextColor(0, col);
 }

@@ -33,10 +33,10 @@ TextFormatter::html_escape(const QString& text)
 	html.reserve(int(text.length() * 1.1));
 	QChar c;
 
-    for (int i = 0, len = text.length(); i < len; ++i)
+	for (int i = 0, len = text.length(); i < len; ++i)
 	{
 		c = text.at(i);
-        if (!escape(c, html))
+		if (!escape(c, html))
 			html += c;
 	}
 	return html;
@@ -53,7 +53,7 @@ TextFormatter::irc_to_html(const QString& raw)
 	bool openReverse = false;
 	int fgcol = 1;
 	int bgcol = 0;
-    QString text;
+	QString text;
 	QChar c;
 	text.reserve(int(raw.length() * 1.1));
 	for (int i = 0, len = raw.size(); i < len; ++i)
@@ -73,14 +73,14 @@ TextFormatter::irc_to_html(const QString& raw)
 			set_html_tag(text, openUnderline, "<u>", "</u>");
 		else if (c == CODE_IRC_STRIKETHROUGH)
 			set_html_tag(text, openUnderline, "<s>", "</s>");
-        else if (c == CODE_IRC_COLOR)
+		else if (c == CODE_IRC_COLOR)
 		{
 			bool isStartColor = false;
 			get_irc_color(fgcol, isStartColor, raw, i);
 			// Background color
 			if ((i + 1) < len && raw[i + 1] == ',')
 			{
-                get_irc_color(bgcol, isStartColor, raw, ++i);
+				get_irc_color(bgcol, isStartColor, raw, ++i);
 			}
 			if (isStartColor)
 			{

@@ -49,8 +49,8 @@ public:
 	/// Dtor
 	~TextBox();
 public:
-    EditBox* input;
-    QTextBrowser* screen;
+	EditBox* input;
+	QTextBrowser* screen;
 private:
 	Ui::TextBox* _ui;
 };

@@ -39,16 +39,16 @@ namespace irc
 class UserItem : public QObject, public QListWidgetItem
 {
 
-    Q_OBJECT
+	Q_OBJECT
 
 public:
 	/// Ctor
-    explicit UserItem(irc::User* user);
+	explicit UserItem(irc::User* user);
 public:
 	irc::User* user() const;
-    virtual bool operator<(const QListWidgetItem& other) const;
+	virtual bool operator<(const QListWidgetItem& other) const;
 private slots:
-    void change_fullnick_slot(const QString& nick);
+	void change_fullnick_slot(const QString& nick);
 private:
 	irc::User* _user;
 };
@@ -56,7 +56,7 @@ private:
 inline irc::User*
 UserItem::user() const
 {
-    return _user;
+	return _user;
 }
 
 inline bool

@@ -28,22 +28,22 @@
 #include "network-tree-item.hh"
 
 NetworkTreeItem::NetworkTreeItem(const Network& network, QTreeWidget* parent) :
-    QTreeWidgetItem(parent),
-    _network(network),
+	QTreeWidgetItem(parent),
+	_network(network),
 	_globalSettings(Parameters::get()),
-    _addressItem(new QTreeWidgetItem(this)),
-    _portItem(new QTreeWidgetItem(this)),
-    _nicknameItem(new QTreeWidgetItem(this)),
-    _userItem(new QTreeWidgetItem(this)),
-    _realnameItem(new QTreeWidgetItem(this)),
-    _altnickItem(new QTreeWidgetItem(this)),
-    _modeItem(new QTreeWidgetItem(this)),
-    _modeInvibleItem(new QTreeWidgetItem(_modeItem)),
-    _modeReceiveWallopsItem(new QTreeWidgetItem(_modeItem))
+	_addressItem(new QTreeWidgetItem(this)),
+	_portItem(new QTreeWidgetItem(this)),
+	_nicknameItem(new QTreeWidgetItem(this)),
+	_userItem(new QTreeWidgetItem(this)),
+	_realnameItem(new QTreeWidgetItem(this)),
+	_altnickItem(new QTreeWidgetItem(this)),
+	_modeItem(new QTreeWidgetItem(this)),
+	_modeInvibleItem(new QTreeWidgetItem(_modeItem)),
+	_modeReceiveWallopsItem(new QTreeWidgetItem(_modeItem))
 {
-    _modeInvibleItem->setText(0, "Invisible");
-    _modeReceiveWallopsItem->setText(0, "Receive Wallops");
-    fill_from_params(network);
+	_modeInvibleItem->setText(0, "Invisible");
+	_modeReceiveWallopsItem->setText(0, "Receive Wallops");
+	fill_from_params(network);
 }
 
 NetworkTreeItem::~NetworkTreeItem()
@@ -54,19 +54,19 @@ NetworkTreeItem::~NetworkTreeItem()
 void
 NetworkTreeItem::fill_from_params(const Network& network)
 {
-    setText(0, network.session.name());
-    _addressItem->setText(0, "Address: " + network.session.hostname());
-    _portItem->setText(0, "Port: " + QString::number(network.session.port()));
+	setText(0, network.session.name());
+	_addressItem->setText(0, "Address: " + network.session.hostname());
+	_portItem->setText(0, "Port: " + QString::number(network.session.port()));
 	if (network.globalIdentity)
 	{
 		_nicknameItem->setText(0, "Use global identity");
-        _userItem->setHidden(true);
+		_userItem->setHidden(true);
 		_realnameItem->setHidden(true);
 		_altnickItem->setHidden(true);
 	}
 	else
 	{
-        _userItem->setHidden(false);
+		_userItem->setHidden(false);
 		_realnameItem->setHidden(false);
 		_altnickItem->setHidden(false);
 
@@ -87,20 +87,20 @@ NetworkTreeItem::fill_from_params(const Network& network)
 			subAltnickItem->setText(0, nick);
 		}
 	}
-    // User modes
-    _modeItem->setText(0, "User modes");
-    _modeItem->setDisabled(true);
-    _modeInvibleItem->setDisabled(true);
-    _modeReceiveWallopsItem->setDisabled(true);
-    if (network.session.has_uMode(irc::MODE_INVISIBLE))
-    {
-        _modeItem->setDisabled(false);
-        _modeInvibleItem->setDisabled(false);
-    }
-    if (network.session.has_uMode(irc::MODE_RECEIVE_WALLOPS))
-    {
-        _modeItem->setDisabled(false);
-        _modeReceiveWallopsItem->setDisabled(false);
-    }
-    _network = network;
+	// User modes
+	_modeItem->setText(0, "User modes");
+	_modeItem->setDisabled(true);
+	_modeInvibleItem->setDisabled(true);
+	_modeReceiveWallopsItem->setDisabled(true);
+	if (network.session.has_uMode(irc::MODE_INVISIBLE))
+	{
+		_modeItem->setDisabled(false);
+		_modeInvibleItem->setDisabled(false);
+	}
+	if (network.session.has_uMode(irc::MODE_RECEIVE_WALLOPS))
+	{
+		_modeItem->setDisabled(false);
+		_modeReceiveWallopsItem->setDisabled(false);
+	}
+	_network = network;
 }

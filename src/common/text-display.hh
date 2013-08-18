@@ -55,8 +55,8 @@ class TextDisplay
  */
 public:
 	/// Ctor
-    explicit TextDisplay(DisplayEventType displayType);
-    TextDisplay(const QString& text, const QString& color);
+	explicit TextDisplay(DisplayEventType displayType);
+	TextDisplay(const QString& text, const QString& color);
 public:
 	/// Push arguments to parameters %
 	void push_nick(const QString& nick);
@@ -64,11 +64,11 @@ public:
 	void push_user(const QString& user);
 	void push_host(const QString& host);
 	void push_modes(const QString& modes);
-    void push_arg(const QString& arg);
+	void push_arg(const QString& arg);
 	void push_target(const QString& target);
 	void push_channel(const QString& channel);
-    void push_raw(const QString& raw);
-    void push_ircraw(const QString& raw);
+	void push_raw(const QString& raw);
+	void push_ircraw(const QString& raw);
 	/// Final text
 	QString richText() const;
 	QString text() const;

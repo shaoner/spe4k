@@ -35,7 +35,7 @@ TextBox::TextBox(QWidget* parent) :
 	_ui(new Ui::TextBox)
 {
 	_ui->setupUi(this);
-    screen = _ui->textDisplay;
+	screen = _ui->textDisplay;
 	input = _ui->lineEdit;
 }
 

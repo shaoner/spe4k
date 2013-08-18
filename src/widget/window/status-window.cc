@@ -42,53 +42,53 @@ StatusWindow::StatusWindow(const QString& name,
 	Window(name, session, parent),
 	_ui(new Ui::StatusWindow)
 {
-    _ui->setupUi(this);
-    _ui->horizontalLayout->insertWidget(0, _textBox);
+	_ui->setupUi(this);
+	_ui->horizontalLayout->insertWidget(0, _textBox);
 	// Attach IRC event listeners
-    connect(&session, SIGNAL(onRaw(irc::RawEvent&)), this, SLOT(raw_slot(irc::RawEvent&)));
-    connect(&session, SIGNAL(onConnecting()), this, SLOT(connecting_slot()));
-    connect(&session, SIGNAL(onConnect()), this, SLOT(connect_slot()));
-    connect(&session, SIGNAL(onDisconnect()), this, SLOT(disconnect_slot()));
+	connect(&session, SIGNAL(onRaw(irc::RawEvent&)), this, SLOT(raw_slot(irc::RawEvent&)));
+	connect(&session, SIGNAL(onConnecting()), this, SLOT(connecting_slot()));
+	connect(&session, SIGNAL(onConnect()), this, SLOT(connect_slot()));
+	connect(&session, SIGNAL(onDisconnect()), this, SLOT(disconnect_slot()));
 	// When text is entered
-    connect(_textBox->input, SIGNAL(returnPressed()), this, SLOT(cmd()));
+	connect(_textBox->input, SIGNAL(returnPressed()), this, SLOT(cmd()));
 }
 
 StatusWindow::~StatusWindow()
 {
 	// Unattach IRC event listeners
-    disconnect(_textBox->input, SIGNAL(returnPressed()), this, SLOT(cmd()));
-    disconnect(&session, SIGNAL(onDisconnect()), this, SLOT(disconnect_slot()));
-    disconnect(&session, SIGNAL(onConnect()), this, SLOT(connect_slot()));
-    disconnect(&session, SIGNAL(onConnecting()), this, SLOT(connecting_slot()));
-    disconnect(&session, SIGNAL(onRaw(irc::RawEvent&)), this, SLOT(raw_slot(irc::RawEvent&)));
+	disconnect(_textBox->input, SIGNAL(returnPressed()), this, SLOT(cmd()));
+	disconnect(&session, SIGNAL(onDisconnect()), this, SLOT(disconnect_slot()));
+	disconnect(&session, SIGNAL(onConnect()), this, SLOT(connect_slot()));
+	disconnect(&session, SIGNAL(onConnecting()), this, SLOT(connecting_slot()));
+	disconnect(&session, SIGNAL(onRaw(irc::RawEvent&)), this, SLOT(raw_slot(irc::RawEvent&)));
 	delete _ui;
 }
 
 void
 StatusWindow::raw_slot(irc::RawEvent& event)
 {
-    if (_params->eventEnabled(DISPLAY_RAW))
-    {
-        TextDisplay td(DISPLAY_RAW);
-        td.push_raw(event.msg());
-        display_event(td);
-    }
+	if (_params->eventEnabled(DISPLAY_RAW))
+	{
+		TextDisplay td(DISPLAY_RAW);
+		td.push_raw(event.msg());
+		display_event(td);
+	}
 }
 
 void
 StatusWindow::connecting_slot()
 {
-    display_info("Connecting to " + session.hostname() + "...");
+	display_info("Connecting to " + session.hostname() + "...");
 }
 
 void
 StatusWindow::connect_slot()
 {
-    display_info("Connection etablished (" + session.hostname() + ":" + QString::number(session.port()) + ")");
+	display_info("Connection etablished (" + session.hostname() + ":" + QString::number(session.port()) + ")");
 }
 
 void
 StatusWindow::disconnect_slot()
 {
-    display_info("Disconnected");
+	display_info("Disconnected");
 }

@@ -238,18 +238,18 @@ CommandHop::CommandHop() :
 inline bool
 CommandHop::process(Window* win, QStringList& args)
 {
-    if ((args.count() > 0) && (win->session.is_channel(args[0])))
+	if ((args.count() > 0) && (win->session.is_channel(args[0])))
 	{
 		win->session.part(win->name());
 		win->session.join(win->name());
 		return true;
 	}
-    else if (win->session.is_channel(win->name()))
-    {
-        win->session.part(win->name());
-        win->session.join(win->name());
-        return true;
-    }
+	else if (win->session.is_channel(win->name()))
+	{
+		win->session.part(win->name());
+		win->session.join(win->name());
+		return true;
+	}
 	return false;
 }
 

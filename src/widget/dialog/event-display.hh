@@ -22,9 +22,8 @@
 /*!
  * \file event-display.hh
  * \author shaoner
- * \brief
+ * \brief Option widget to format an event
  */
-
 #ifndef EVENT_DISPLAY_HH
 #define EVENT_DISPLAY_HH
 
@@ -34,35 +33,36 @@
 
 namespace Ui
 {
-    class EventDisplay;
+	class EventDisplay;
 } // namespace Ui
 
 class Parameters;
 
 class EventDisplay : public QWidget
 {
-    Q_OBJECT
-    
+
+	Q_OBJECT
+
 public:
-    explicit EventDisplay(DisplayEventType displayType, QWidget* parent = 0);
-    ~EventDisplay();
+	explicit EventDisplay(DisplayEventType displayType, QWidget* parent = 0);
+	~EventDisplay();
 public:
-    void save() const;
+	void save() const;
 private:
-    void init();
+	void init();
 private slots:
-    void on_btnEventColor_clicked();
+	void on_btnEventColor_clicked();
 
-    void on_edtEventFormat_textChanged(const QString& fmt);
+	void on_edtEventFormat_textChanged(const QString& fmt);
 
-    void on_btnReset_clicked();
+	void on_btnReset_clicked();
 
 private:
-    Ui::EventDisplay* _ui;
-    DisplayEventType _displayType;
-    Parameters* _params;
-    QString _format;
-    QColor _color;
+	Ui::EventDisplay* _ui;
+	DisplayEventType _displayType;
+	Parameters* _params;
+	QString _format;
+	QColor _color;
 };
 
 #endif /* !EVENT_DISPLAY_HH */

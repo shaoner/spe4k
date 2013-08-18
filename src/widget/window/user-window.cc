@@ -35,34 +35,34 @@
 #include "edit-box.hh"
 
 UserWindow::UserWindow(const QString& name, irc::Session& session, QWidget *parent) :
-    Window(name, session, parent),
-    _ui(new Ui::UserWindow)
+	Window(name, session, parent),
+	_ui(new Ui::UserWindow)
 {
-    _ui->setupUi(this);
-    _ui->horizontalLayout->insertWidget(0, _textBox);
+	_ui->setupUi(this);
+	_ui->horizontalLayout->insertWidget(0, _textBox);
 	// Attach IRC event listeners
-    connect(&session, SIGNAL(onPrivateMessage(irc::CommandEvent&, const QString&, const QString&)),
-            this, SLOT(privatemessage_slot(irc::CommandEvent&, const QString&)));
-    connect(&session, SIGNAL(onQuit(irc::CommandEvent&, const QString&)),
-            this, SLOT(quit_slot(irc::CommandEvent&, const QString&)));
-    connect(&session, SIGNAL(onNick(irc::CommandEvent&, const QString&)),
-            this, SLOT(nick_slot(irc::CommandEvent&, const QString&)));
+	connect(&session, SIGNAL(onPrivateMessage(irc::CommandEvent&, const QString&, const QString&)),
+			this, SLOT(privatemessage_slot(irc::CommandEvent&, const QString&)));
+	connect(&session, SIGNAL(onQuit(irc::CommandEvent&, const QString&)),
+			this, SLOT(quit_slot(irc::CommandEvent&, const QString&)));
+	connect(&session, SIGNAL(onNick(irc::CommandEvent&, const QString&)),
+			this, SLOT(nick_slot(irc::CommandEvent&, const QString&)));
 
-    connect(_textBox->input, SIGNAL(returnPressed()), this, SLOT(send_message()));
+	connect(_textBox->input, SIGNAL(returnPressed()), this, SLOT(send_message()));
 }
 
 UserWindow::~UserWindow()
 {
-    disconnect(_textBox->input, SIGNAL(returnPressed()), this, SLOT(send_message()));
+	disconnect(_textBox->input, SIGNAL(returnPressed()), this, SLOT(send_message()));
 	// Unattach IRC event listeners
-    disconnect(&session, SIGNAL(onNick(irc::CommandEvent&, const QString&)),
-            this, SLOT(nick_slot(irc::CommandEvent&, const QString&)));
+	disconnect(&session, SIGNAL(onNick(irc::CommandEvent&, const QString&)),
+			this, SLOT(nick_slot(irc::CommandEvent&, const QString&)));
 
-    disconnect(&session, SIGNAL(onQuit(irc::CommandEvent&, const QString&)),
-            this, SLOT(quit_slot(irc::CommandEvent&, const QString&)));
-    disconnect(&session, SIGNAL(onPrivateMessage(irc::CommandEvent&, const QString&, const QString&)),
-            this, SLOT(privatemessage_slot(irc::CommandEvent&, const QString&)));
-    delete _ui;
+	disconnect(&session, SIGNAL(onQuit(irc::CommandEvent&, const QString&)),
+			this, SLOT(quit_slot(irc::CommandEvent&, const QString&)));
+	disconnect(&session, SIGNAL(onPrivateMessage(irc::CommandEvent&, const QString&, const QString&)),
+			this, SLOT(privatemessage_slot(irc::CommandEvent&, const QString&)));
+	delete _ui;
 }
 
 void
@@ -71,10 +71,10 @@ UserWindow::privatemessage_slot(irc::CommandEvent& event, const QString& msg)
 	if (event.nick() == _name)
 	{
 		display_message(event.nick(), event.nick(), msg);
-        if (!is_active())
-        {
-            item()->set_level(LIGHT_LVL_MESSAGE);
-        }
+		if (!is_active())
+		{
+			item()->set_level(LIGHT_LVL_MESSAGE);
+		}
 	}
 }
 
@@ -83,15 +83,15 @@ UserWindow::nick_slot(irc::CommandEvent& event, const QString& newNick)
 {
 	if (event.nick() == _name)
 	{
-        if (_params->eventEnabled(DISPLAY_NICK))
-        {
-            TextDisplay td(DISPLAY_NICK);
-            td.push_nick(event.nick());
-            td.push_user(event.user());
-            td.push_host(event.host());
-            td.push_target(newNick);
-            display_event(td);
-        }
+		if (_params->eventEnabled(DISPLAY_NICK))
+		{
+			TextDisplay td(DISPLAY_NICK);
+			td.push_nick(event.nick());
+			td.push_user(event.user());
+			td.push_host(event.host());
+			td.push_target(newNick);
+			display_event(td);
+		}
 		_name = newNick;
 		setWindowTitle(_name);
 	}
@@ -102,15 +102,15 @@ UserWindow::quit_slot(irc::CommandEvent& event, const QString& reason)
 {
 	if (event.nick() == _name)
 	{
-        if (_params->eventEnabled(DISPLAY_QUIT))
-        {
-            TextDisplay td(DISPLAY_QUIT);
-            td.push_nick(event.nick());
-            td.push_user(event.user());
-            td.push_host(event.host());
-            td.push_raw(reason);
-            display_event(td);
-        }
+		if (_params->eventEnabled(DISPLAY_QUIT))
+		{
+			TextDisplay td(DISPLAY_QUIT);
+			td.push_nick(event.nick());
+			td.push_user(event.user());
+			td.push_host(event.host());
+			td.push_raw(reason);
+			display_event(td);
+		}
 	}
 }
 
@@ -123,5 +123,5 @@ UserWindow::disconnect_slot()
 void
 UserWindow::send_message()
 {
-    send(session.nickname(), session.nickname());
+	send(session.nickname(), session.nickname());
 }

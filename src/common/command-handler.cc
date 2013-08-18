@@ -113,8 +113,8 @@ CommandHandler::CommandHandler()
 
 CommandHandler::~CommandHandler()
 {
-    foreach(Command* cmd, _internCmdMap)
-    {
-        delete cmd;
-    }
+	foreach(Command* cmd, _internCmdMap)
+	{
+		delete cmd;
+	}
 }

@@ -64,8 +64,8 @@ protected:
 struct CommandAction : public Command
 {
 	CommandAction();
-    virtual bool process(Window* win, QStringList& args);
-    virtual bool process(StatusWindow* win, QStringList& args);
+	virtual bool process(Window* win, QStringList& args);
+	virtual bool process(StatusWindow* win, QStringList& args);
 };
 
 /*!
@@ -105,7 +105,7 @@ struct CommandClear : public Command
 struct CommandCleartopic : public Command
 {
 	CommandCleartopic();
-    virtual bool process(Window* win, QStringList& args);
+	virtual bool process(Window* win, QStringList& args);
 };
 
 /*!
@@ -133,7 +133,7 @@ struct CommandDie : public Command
 struct CommandEcho : public Command
 {
 	CommandEcho();
-    virtual bool process(Window* win, QStringList& args);
+	virtual bool process(Window* win, QStringList& args);
 };
 
 /*!
@@ -155,7 +155,7 @@ private:
 struct CommandHop : public Command
 {
 	CommandHop();
-    virtual bool process(Window* win, QStringList& args);
+	virtual bool process(Window* win, QStringList& args);
 };
 
 /*!
@@ -194,7 +194,7 @@ struct CommandJoin : public Command
 struct CommandKick : public Command
 {
 	CommandKick();
-    virtual bool process(Window* win, QStringList& args);
+	virtual bool process(Window* win, QStringList& args);
 };
 
 /*!
@@ -249,7 +249,7 @@ struct CommandLusers : public Command
 struct CommandMode : public Command
 {
 	CommandMode();
-    virtual bool process(Window* win, QStringList& args);
+	virtual bool process(Window* win, QStringList& args);
 };
 
 /*!
@@ -268,7 +268,7 @@ struct CommandMotd : public Command
 struct CommandMsg : public Command
 {
 	CommandMsg();
-    virtual bool process(Window* win, QStringList& args);
+	virtual bool process(Window* win, QStringList& args);
 };
 
 /*!
@@ -297,7 +297,7 @@ struct CommandNick : public Command
 struct CommandNotice : public Command
 {
 	CommandNotice();
-    virtual bool process(Window* win, QStringList& args);
+	virtual bool process(Window* win, QStringList& args);
 };
 
 /*!
@@ -316,7 +316,7 @@ struct CommandOper : public Command
 struct CommandPart : public Command
 {
 	CommandPart();
-    virtual bool process(Window* win, QStringList& args);
+	virtual bool process(Window* win, QStringList& args);
 };
 
 /*!
@@ -335,7 +335,7 @@ struct CommandQuit : public Command
 struct CommandQuote : public Command
 {
 	CommandQuote();
-    virtual bool process(Window* win, QStringList& args);
+	virtual bool process(Window* win, QStringList& args);
 };
 
 /*!
@@ -345,7 +345,7 @@ struct CommandQuote : public Command
 struct CommandReconnect : public Command
 {
 	CommandReconnect();
-    virtual bool process(Window* win, QStringList& args);
+	virtual bool process(Window* win, QStringList& args);
 };
 
 /*!
@@ -373,7 +373,7 @@ struct CommandRestart : public Command
 struct CommandServer : public Command
 {
 	CommandServer();
-    virtual bool process(Window* win, QStringList& args);
+	virtual bool process(Window* win, QStringList& args);
 };
 
 /*!
@@ -410,7 +410,7 @@ struct CommandTime : public Command
 struct CommandTopic : public Command
 {
 	CommandTopic();
-    virtual bool process(Window* win, QStringList& args);
+	virtual bool process(Window* win, QStringList& args);
 };
 
 /*!

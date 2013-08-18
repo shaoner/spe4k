@@ -50,42 +50,42 @@ class NetworkDialog;
 class SessionListDialog : public QDialog
 {
 
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    SessionListDialog(QWidget *parent = 0);
-    ~SessionListDialog();
+	SessionListDialog(QWidget *parent = 0);
+	~SessionListDialog();
 public:
-    const irc::SessionParameters& sessionParams() const;
+	const irc::SessionParameters& sessionParams() const;
 private:
-    void fill_networks();
-    void save_network(const Network& network);
-    void add_item(const Network& network);
-    void edit_item(QTreeWidgetItem* item);
-    void init_connection(QTreeWidgetItem* item);
-    bool contains(const QString& name);
+	void fill_networks();
+	void save_network(const Network& network);
+	void add_item(const Network& network);
+	void edit_item(QTreeWidgetItem* item);
+	void init_connection(QTreeWidgetItem* item);
+	bool contains(const QString& name);
 private slots:
-    void on_btnAdd_clicked();
-    void on_btnConnect_clicked();
-    void on_btnEdit_clicked();
-    void on_lstSession_itemDoubleClicked(QTreeWidgetItem* item, int column);
-    void on_btnRemove_clicked();
-    void on_edtGblNickname_editingFinished();
-    void on_edtGblUsername_editingFinished();
-    void on_edtGblRealname_editingFinished();
-    void on_edtGblAltnicknames_editingFinished();
+	void on_btnAdd_clicked();
+	void on_btnConnect_clicked();
+	void on_btnEdit_clicked();
+	void on_lstSession_itemDoubleClicked(QTreeWidgetItem* item, int column);
+	void on_btnRemove_clicked();
+	void on_edtGblNickname_editingFinished();
+	void on_edtGblUsername_editingFinished();
+	void on_edtGblRealname_editingFinished();
+	void on_edtGblAltnicknames_editingFinished();
 private:
-    Ui::SessionListDialog* _ui;
-    QSettings* _networkSettings;
-    NetworkDialog* _networkDialog;
+	Ui::SessionListDialog* _ui;
+	QSettings* _networkSettings;
+	NetworkDialog* _networkDialog;
 	Parameters* _globalSettings;
-    irc::SessionParameters _sessionParams;
+	irc::SessionParameters _sessionParams;
 };
 
 inline const irc::SessionParameters&
 SessionListDialog::sessionParams() const
 {
-    return _sessionParams;
+	return _sessionParams;
 }
 
 #endif /* !SESSIONLIST_DIALOG_HH */

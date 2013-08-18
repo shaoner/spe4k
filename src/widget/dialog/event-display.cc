@@ -22,7 +22,7 @@
 /*!
  * \file event-display.cc
  * \author shaoner
- * \brief
+ * \brief Option widget to format an event
  */
 
 #include "event-display.hh"
@@ -32,65 +32,65 @@
 #include "common/parameters.hh"
 
 EventDisplay::EventDisplay(DisplayEventType displayType, QWidget* parent) :
-    QWidget(parent),
-    _ui(new Ui::EventDisplay),
-    _displayType(displayType),
-    _params(Parameters::get())
+	QWidget(parent),
+	_ui(new Ui::EventDisplay),
+	_displayType(displayType),
+	_params(Parameters::get())
 {
 
-    _ui->setupUi(this);
-    init();
+	_ui->setupUi(this);
+	init();
 }
 
 EventDisplay::~EventDisplay()
 {
-    delete _ui;
+	delete _ui;
 }
 
 void
 EventDisplay::save() const
 {
-    _params->set_eventFormat(_displayType, _format);
-    _params->set_eventColor(_displayType, _color.name());
-    _params->set_eventEnabled(_displayType, _ui->chkEventEnabled->isChecked());
+	_params->set_eventFormat(_displayType, _format);
+	_params->set_eventColor(_displayType, _color.name());
+	_params->set_eventEnabled(_displayType, _ui->chkEventEnabled->isChecked());
 }
 
 void
 EventDisplay::init()
 {
-    _format = _params->eventFormat(_displayType);
-    _color = _params->eventColor(_displayType);
-    _ui->chkEventEnabled->setChecked(_params->eventEnabled(_displayType));
-    _ui->edtEventFormat->setText(_format);
-    _ui->lblColor->setText(_color.name());
-    _ui->lblColor->setPalette(QPalette(_color));
+	_format = _params->eventFormat(_displayType);
+	_color = _params->eventColor(_displayType);
+	_ui->chkEventEnabled->setChecked(_params->eventEnabled(_displayType));
+	_ui->edtEventFormat->setText(_format);
+	_ui->lblColor->setText(_color.name());
+	_ui->lblColor->setPalette(QPalette(_color));
 }
 
 void
 EventDisplay::on_btnEventColor_clicked()
 {
-    QColor color = QColorDialog::getColor(_color, this);
-    if (color.isValid())
-    {
-        _color = color;
-        _ui->edtEventVisual->setHtml("<span style=\"color:" + _color.name() + ";\">"
-                                     + _format + "</span>");
-        _ui->lblColor->setText(_color.name());
-        _ui->lblColor->setPalette(QPalette(_color));
-    }
+	QColor color = QColorDialog::getColor(_color, this);
+	if (color.isValid())
+	{
+		_color = color;
+		_ui->edtEventVisual->setHtml("<span style=\"color:" + _color.name() + ";\">"
+									 + _format + "</span>");
+		_ui->lblColor->setText(_color.name());
+		_ui->lblColor->setPalette(QPalette(_color));
+	}
 }
 
 void
 EventDisplay::on_edtEventFormat_textChanged(const QString& fmt)
 {
-    _format = fmt;
-    _ui->edtEventVisual->setHtml("<span style=\"color:" + _color.name() + ";\">"
-                                 + fmt + "</span>");
+	_format = fmt;
+	_ui->edtEventVisual->setHtml("<span style=\"color:" + _color.name() + ";\">"
+								 + fmt + "</span>");
 }
 
 void
 EventDisplay::on_btnReset_clicked()
 {
-    _params->reset_event(_displayType);
-    init();
+	_params->reset_event(_displayType);
+	init();
 }

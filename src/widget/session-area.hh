@@ -50,52 +50,52 @@ class Parameters;
 class SessionArea : public QMdiArea
 {
 
-    Q_OBJECT
+	Q_OBJECT
 
 public:
 	/// Ctor
-    explicit SessionArea(QTreeWidget* tree, const irc::SessionParameters& sessionParams, QWidget *parent = 0);
+	explicit SessionArea(QTreeWidget* tree, const irc::SessionParameters& sessionParams, QWidget *parent = 0);
 	/// Dtor
-    ~SessionArea();
+	~SessionArea();
 public:
-    irc::Session& session();
-    void remove_window(const QString& name);
-    const QString& name;
+	irc::Session& session();
+	void remove_window(const QString& name);
+	const QString& name;
 signals:
-    void onWindowCreated(int serverId, int id, const QString& name, bool active);
-    void onWindowRemoved(int serverId, int id);
-    void onSessionConnect(SessionArea* area);
-    void onSessionDisconnect(SessionArea* area);
+	void onWindowCreated(int serverId, int id, const QString& name, bool active);
+	void onWindowRemoved(int serverId, int id);
+	void onSessionConnect(SessionArea* area);
+	void onSessionDisconnect(SessionArea* area);
 	void onClose(SessionArea* area);
 protected:
 	virtual void closeEvent(QCloseEvent* event);
 private:
 	/// Handle adding and removing windows
 	int index_of(const QString& name);
-    void add_window(Window* win, bool active);
-    ChannelWindow* add_channelwindow(const QString& name);
-    UserWindow* add_userwindow(const QString& name);
-    void remove_window(int idx);
+	void add_window(Window* win, bool active);
+	ChannelWindow* add_channelwindow(const QString& name);
+	UserWindow* add_userwindow(const QString& name);
+	void remove_window(int idx);
 	/// Reconnect handler
-    void reconnect();
+	void reconnect();
 private slots:
-    void privatemessage_slot(irc::CommandEvent& event, const QString& message);
-    void join_slot(irc::CommandEvent& event, const QString& channel);
-    void part_slot(irc::CommandEvent& event, const QString& channel, const QString& reason);
-    void kick_slot(irc::CommandEvent& event, const QString& channel, const QString& target, const QString& reason);
-    void connect_slot();
-    void disconnect_slot();
-    void error_slot(QAbstractSocket::SocketError error);
-    void active_window_slot(QMdiSubWindow*);
+	void privatemessage_slot(irc::CommandEvent& event, const QString& message);
+	void join_slot(irc::CommandEvent& event, const QString& channel);
+	void part_slot(irc::CommandEvent& event, const QString& channel, const QString& reason);
+	void kick_slot(irc::CommandEvent& event, const QString& channel, const QString& target, const QString& reason);
+	void connect_slot();
+	void disconnect_slot();
+	void error_slot(QAbstractSocket::SocketError error);
+	void active_window_slot(QMdiSubWindow*);
 	void timeout_reconnect();
 private:
-    QTreeWidget* _tree;
+	QTreeWidget* _tree;
 	irc::Session _session;
 	StatusWindow* _statusWindow;
 	QTimer _timerReconnect;
-    Parameters* _params;
-    int _reconnectDelay;
-    int _reconnectRetry;
+	Parameters* _params;
+	int _reconnectDelay;
+	int _reconnectRetry;
 };
 
 inline irc::Session&

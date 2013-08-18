@@ -38,24 +38,24 @@ namespace Ui
 
 class EditBox : public QLineEdit
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
 	/// Ctor
-    explicit EditBox(QWidget* parent = 0);
+	explicit EditBox(QWidget* parent = 0);
 	/// Dtor
-    ~EditBox();
+	~EditBox();
 protected:
-    void keyPressEvent(QKeyEvent* event);
+	void keyPressEvent(QKeyEvent* event);
 signals:
-    void onTabKey(bool previousTab, int begPos, int& len);
+	void onTabKey(bool previousTab, int begPos, int& len);
 private slots:
 	void entered_slot();
 private:
-    Ui::EditBox* _ui;
-    bool _previousTab;
-    int _previousPos;
-    int _previousLen;
+	Ui::EditBox* _ui;
+	bool _previousTab;
+	int _previousPos;
+	int _previousLen;
 	QList<QString> _history;
 	int _historyIdx;
 	bool _keepBuffer;

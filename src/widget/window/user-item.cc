@@ -30,17 +30,17 @@
 #include <user.hh>
 
 UserItem::UserItem(irc::User* user) :
-    QListWidgetItem(user->fullnick()),
-    _user(user)
+	QListWidgetItem(user->fullnick()),
+	_user(user)
 {
-    QObject::connect(_user, SIGNAL(onChangeFullNick(const QString&)), this, SLOT(change_fullnick_slot(const QString&)));
+	QObject::connect(_user, SIGNAL(onChangeFullNick(const QString&)), this, SLOT(change_fullnick_slot(const QString&)));
 }
 
 void
 UserItem::change_fullnick_slot(const QString& nick)
 {
-    if (nick == _user->nick())
-    {
-        setText(_user->fullnick());
-    }
+	if (nick == _user->nick())
+	{
+		setText(_user->fullnick());
+	}
 }

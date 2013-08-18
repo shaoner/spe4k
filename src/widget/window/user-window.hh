@@ -37,22 +37,22 @@ namespace Ui
 class UserWindow : public Window
 {
 
-    Q_OBJECT
+	Q_OBJECT
 
 public:
 	/// Ctor
-    explicit UserWindow(const QString& name, irc::Session& session, QWidget* parent = 0);
+	explicit UserWindow(const QString& name, irc::Session& session, QWidget* parent = 0);
 	/// Dtor
-    ~UserWindow();
+	~UserWindow();
 private slots:
 	/// IRC event listeners
-    void privatemessage_slot(irc::CommandEvent& event, const QString& msg);
-    void nick_slot(irc::CommandEvent& event, const QString& newNick);
-    void quit_slot(irc::CommandEvent& event, const QString& reason);
-    void disconnect_slot();
-    void send_message();
+	void privatemessage_slot(irc::CommandEvent& event, const QString& msg);
+	void nick_slot(irc::CommandEvent& event, const QString& newNick);
+	void quit_slot(irc::CommandEvent& event, const QString& reason);
+	void disconnect_slot();
+	void send_message();
 private:
-    Ui::UserWindow* _ui;
+	Ui::UserWindow* _ui;
 };
 
 #endif /* !USER_WINDOW_HH */

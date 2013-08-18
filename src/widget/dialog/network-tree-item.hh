@@ -36,23 +36,23 @@
 class NetworkTreeItem : public QTreeWidgetItem
 {
 public:
-    explicit NetworkTreeItem(const Network& network, QTreeWidget* parent = 0);
+	explicit NetworkTreeItem(const Network& network, QTreeWidget* parent = 0);
 	~NetworkTreeItem();
 public:
-    void fill_from_params(const Network& network);
+	void fill_from_params(const Network& network);
 	const Network& network();
 private:
 	Network _network;
 	Parameters* _globalSettings;
-    QTreeWidgetItem* _addressItem;
-    QTreeWidgetItem* _portItem;
-    QTreeWidgetItem* _nicknameItem;
-    QTreeWidgetItem* _userItem;
-    QTreeWidgetItem* _realnameItem;
-    QTreeWidgetItem* _altnickItem;
-    QTreeWidgetItem* _modeItem;
-    QTreeWidgetItem* _modeInvibleItem;
-    QTreeWidgetItem* _modeReceiveWallopsItem;
+	QTreeWidgetItem* _addressItem;
+	QTreeWidgetItem* _portItem;
+	QTreeWidgetItem* _nicknameItem;
+	QTreeWidgetItem* _userItem;
+	QTreeWidgetItem* _realnameItem;
+	QTreeWidgetItem* _altnickItem;
+	QTreeWidgetItem* _modeItem;
+	QTreeWidgetItem* _modeInvibleItem;
+	QTreeWidgetItem* _modeReceiveWallopsItem;
 };
 
 inline const Network&

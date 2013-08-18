@@ -38,14 +38,14 @@ class WindowItem : public QTreeWidgetItem
 {
 public:
 	/// Ctor
-    explicit WindowItem(const QString& name);
+	explicit WindowItem(const QString& name);
 public:
-    QMdiSubWindow* subwindow() const;
+	QMdiSubWindow* subwindow() const;
 	void set_subwindow(QMdiSubWindow* subwindow);
 	void set_level(LightLevel level);
 	void reset_level();
 private:
-    QMdiSubWindow* _subwindow;
+	QMdiSubWindow* _subwindow;
 	LightLevel _level;
 };
 

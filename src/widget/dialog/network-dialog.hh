@@ -22,9 +22,8 @@
 /*!
  * \file network-dialog.hh
  * \author shaoner
- * \brief
+ * \brief Add a network
  */
-
 #ifndef NETWORK_DIALOG_HH
 # define NETWORK_DIALOG_HH
 
@@ -41,33 +40,33 @@ class Parameters;
 
 class NetworkDialog : public QDialog
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    explicit NetworkDialog(QWidget *parent = 0);
-    ~NetworkDialog();
+	explicit NetworkDialog(QWidget *parent = 0);
+	~NetworkDialog();
 public:
-    int open();
-    int open(const Network& network);
-    Network get_network() const;
+	int open();
+	int open(const Network& network);
+	Network get_network() const;
 private:
-    void reset();
-    void enable_save();
+	void reset();
+	void enable_save();
 private slots:
-    void on_edtNetwork_textEdited(const QString&);
-    void on_edtAddress_textEdited(const QString&);
-    void on_edtNickname_textEdited(const QString&);
-    void on_edtUser_textEdited(const QString&);
-    void on_edtRealname_textEdited(const QString&);
-    void on_btnSave_clicked();
-    void on_btnCancel_clicked();
-    void on_edtNickname_lostFocus();
-    void on_chkInvisibleMode_clicked();
-    void on_chkReceiveWallops_clicked();
-    void on_edtAltNickname_textEdited(const QString &arg1);
-    void on_chkGlobalIdentity_toggled(bool checked);
+	void on_edtNetwork_textEdited(const QString&);
+	void on_edtAddress_textEdited(const QString&);
+	void on_edtNickname_textEdited(const QString&);
+	void on_edtUser_textEdited(const QString&);
+	void on_edtRealname_textEdited(const QString&);
+	void on_btnSave_clicked();
+	void on_btnCancel_clicked();
+	void on_edtNickname_lostFocus();
+	void on_chkInvisibleMode_clicked();
+	void on_chkReceiveWallops_clicked();
+	void on_edtAltNickname_textEdited(const QString &arg1);
+	void on_chkGlobalIdentity_toggled(bool checked);
 private:
-    Ui::NetworkDialog* _ui;
+	Ui::NetworkDialog* _ui;
 	Parameters* _globalSettings;
 };
 

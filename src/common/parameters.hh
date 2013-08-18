@@ -43,22 +43,22 @@ class QSettings;
  */
 enum DisplayEventType
 {
-    DISPLAY_JOIN = 0x0,
-    DISPLAY_PART = 0x1,
-    DISPLAY_PART_REASON = 0x2,
-    DISPLAY_KICK = 0x3,
-    DISPLAY_MODE = 0x4,
-    DISPLAY_NICK = 0x5,
-    DISPLAY_QUIT = 0x6,
-    DISPLAY_TOPIC_CHANGE = 0x7,
-    DISPLAY_TOPIC = 0x8,
-    DISPLAY_TOPIC_INFO = 0x9,
-    DISPLAY_NOTOPIC = 0xa,
-    DISPLAY_RAW = 0xb,
-    DISPLAY_INFO = 0xc,
-    DISPLAY_MESSAGE = 0xd,
-    DISPLAY_ACTION = 0xe,
-    DISPLAY_NOTICE = 0xf
+	DISPLAY_JOIN = 0x0,
+	DISPLAY_PART = 0x1,
+	DISPLAY_PART_REASON = 0x2,
+	DISPLAY_KICK = 0x3,
+	DISPLAY_MODE = 0x4,
+	DISPLAY_NICK = 0x5,
+	DISPLAY_QUIT = 0x6,
+	DISPLAY_TOPIC_CHANGE = 0x7,
+	DISPLAY_TOPIC = 0x8,
+	DISPLAY_TOPIC_INFO = 0x9,
+	DISPLAY_NOTOPIC = 0xa,
+	DISPLAY_RAW = 0xb,
+	DISPLAY_INFO = 0xc,
+	DISPLAY_MESSAGE = 0xd,
+	DISPLAY_ACTION = 0xe,
+	DISPLAY_NOTICE = 0xf
 };
 
 /*!
@@ -67,10 +67,10 @@ enum DisplayEventType
  */
 enum LightLevel
 {
-    LIGHT_LVL_NONE = 0,
-    LIGHT_LVL_EVENT = 1,
-    LIGHT_LVL_MESSAGE = 2,
-    LIGHT_LVL_HIGHLIGHT = 3
+	LIGHT_LVL_NONE = 0,
+	LIGHT_LVL_EVENT = 1,
+	LIGHT_LVL_MESSAGE = 2,
+	LIGHT_LVL_HIGHLIGHT = 3
 };
 
 class Parameters;
@@ -82,16 +82,16 @@ class Parameters;
 class EventScheme
 {
 public:
-    /// Ctor
-    EventScheme(const QString& key, QSettings* settings);
+	/// Ctor
+	EventScheme(const QString& key, QSettings* settings);
 private:
-    friend class Parameters;
-    QString _keyFormat;
-    QString _format;
-    QString _keyColor;
-    QString _color;
-    QString _keyEnabled;
-    bool _enabled;
+	friend class Parameters;
+	QString _keyFormat;
+	QString _format;
+	QString _keyColor;
+	QString _color;
+	QString _keyEnabled;
+	bool _enabled;
 };
 
 /*!
@@ -104,21 +104,21 @@ public:
 	static Parameters* get();
 	static void reset();
 public:
-    const QColor& levelColor(LightLevel level) const;
-    const QString& ircColor(int code) const;
-    void set_ircColor(int code, const QString& color);
-    QString eventFormat(DisplayEventType event) const;
-    void set_eventFormat(DisplayEventType event, const QString& format);
-    QString eventColor(DisplayEventType event) const;
-    void set_eventColor(DisplayEventType event, const QString& color);
-    bool eventEnabled(DisplayEventType event) const;
-    void set_eventEnabled(DisplayEventType, bool enabled);
-    void reset_event(DisplayEventType event);
+	const QColor& levelColor(LightLevel level) const;
+	const QString& ircColor(int code) const;
+	void set_ircColor(int code, const QString& color);
+	QString eventFormat(DisplayEventType event) const;
+	void set_eventFormat(DisplayEventType event, const QString& format);
+	QString eventColor(DisplayEventType event) const;
+	void set_eventColor(DisplayEventType event, const QString& color);
+	bool eventEnabled(DisplayEventType event) const;
+	void set_eventEnabled(DisplayEventType, bool enabled);
+	void reset_event(DisplayEventType event);
 	/// Simple aliases to get and set options
-    template <typename T> T get(const QString& key) const;
+	template <typename T> T get(const QString& key) const;
 	template <typename T> void set(const QString& key, T value);
 private:
-    void init_default();
+	void init_default();
 	template <typename T> void init(const QString& key, const T& value);
 private:
 	/// Ctor
@@ -127,14 +127,14 @@ private:
 	~Parameters();
 private:
 	static Parameters* _instance;
-    static const QString _eventName[];
-    static const QString _eventDefaultFormat[];
-    static const QString _eventDefaultColor[];
+	static const QString _eventName[];
+	static const QString _eventDefaultFormat[];
+	static const QString _eventDefaultColor[];
 private:
-    QSettings* _settings;
-    QList<EventScheme> _eventScheme;
-    QList<QColor> _levelColor;
-    QList<QString> _ircColor;
+	QSettings* _settings;
+	QList<EventScheme> _eventScheme;
+	QList<QColor> _levelColor;
+	QList<QString> _ircColor;
 };
 
 # include "parameters.hxx"

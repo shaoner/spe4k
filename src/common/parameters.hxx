@@ -47,67 +47,67 @@ Parameters::set(const QString& key, T value)
 inline const QString&
 Parameters::ircColor(int code) const
 {
-    return _ircColor[code % 15];
+	return _ircColor[code % 15];
 }
 
 inline void
 Parameters::set_ircColor(int code, const QString& color)
 {
-    _ircColor[code] = color;
-    set("Color/" + QString((code < 10 ? "0" : "") + QString::number(code)), color);
+	_ircColor[code] = color;
+	set("Color/" + QString((code < 10 ? "0" : "") + QString::number(code)), color);
 }
 
 inline const QColor&
 Parameters::levelColor(LightLevel level) const
 {
-    return _levelColor[(int)level];
+	return _levelColor[(int)level];
 }
 
 inline QString
 Parameters::eventFormat(DisplayEventType event) const
 {
-    return _eventScheme[event]._format;
+	return _eventScheme[event]._format;
 }
 
 inline void
 Parameters::set_eventFormat(DisplayEventType event, const QString& format)
 {
-    _eventScheme[event]._format = format;
-    set(_eventScheme[event]._keyFormat, format);
+	_eventScheme[event]._format = format;
+	set(_eventScheme[event]._keyFormat, format);
 }
 
 inline QString
 Parameters::eventColor(DisplayEventType event) const
 {
-    return _eventScheme[event]._color;
+	return _eventScheme[event]._color;
 }
 
 inline void
 Parameters::set_eventColor(DisplayEventType event, const QString& color)
 {
-    _eventScheme[event]._color = color;
-    set(_eventScheme[event]._keyColor, color);
+	_eventScheme[event]._color = color;
+	set(_eventScheme[event]._keyColor, color);
 }
 
 inline bool
 Parameters::eventEnabled(DisplayEventType event) const
 {
-    return _eventScheme[event]._enabled;
+	return _eventScheme[event]._enabled;
 }
 
 inline void
 Parameters::set_eventEnabled(DisplayEventType event, bool enabled)
 {
-    _eventScheme[event]._enabled = enabled;
-    set(_eventScheme[event]._keyEnabled, enabled);
+	_eventScheme[event]._enabled = enabled;
+	set(_eventScheme[event]._keyEnabled, enabled);
 }
 
 inline void
 Parameters::reset_event(DisplayEventType event)
 {
-    set_eventFormat(event, _eventDefaultFormat[event]);
-    set_eventColor(event, _eventDefaultColor[event]);
-    set_eventEnabled(event, true);
+	set_eventFormat(event, _eventDefaultFormat[event]);
+	set_eventColor(event, _eventDefaultColor[event]);
+	set_eventEnabled(event, true);
 }
 
 template <typename T> inline void

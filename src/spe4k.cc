@@ -30,8 +30,8 @@
 int main(int argc, char* argv[])
 {
 	int exitStatus = 0;
-    QApplication a(argc, argv);
-    MainWindow w;
+	QApplication a(argc, argv);
+	MainWindow w;
 	w.show();
 	exitStatus = a.exec();
 	return exitStatus;

@@ -58,25 +58,25 @@ public:
 	static QString html_escape(const QString& text);
 	static QString irc_to_html(const QString& raw);
 private:
-    static bool escape(QChar c, QString& text);
+	static bool escape(QChar c, QString& text);
 	static void set_html_tag(QString& text, bool& isOpened, const QString& openTag, const QString& closeTag);
-    static void get_irc_color(int& color, bool& isColor, const QString& text, int& i);
-    static void set_irc_color(int fg, int bg, bool opened, QString& text);
+	static void get_irc_color(int& color, bool& isColor, const QString& text, int& i);
+	static void set_irc_color(int fg, int bg, bool opened, QString& text);
 private:
 };
 
 inline bool
 TextFormatter::escape(QChar c, QString& text)
 {
-    if (c == '&')
-        text += "&amp;";
-    else if (c == '<')
-        text += "&lt;";
-    else if (c == '>')
-        text += "&gt;";
-    else
-        return false;
-    return true;
+	if (c == '&')
+		text += "&amp;";
+	else if (c == '<')
+		text += "&lt;";
+	else if (c == '>')
+		text += "&gt;";
+	else
+		return false;
+	return true;
 }
 
 inline void
@@ -104,11 +104,11 @@ TextFormatter::get_irc_color(int& color, bool& isColor, const QString& text, int
 		color = tmpColor;
 		isColor = true;
 		// Next char is also a number
-        if ((++i + 1) < text.length() && (tmpColor = text.at(i + 1).digitValue()) != -1)
-        {
-            ++i;
+		if ((++i + 1) < text.length() && (tmpColor = text.at(i + 1).digitValue()) != -1)
+		{
+			++i;
 			color = color * 10 + tmpColor;
-        }
+		}
 	}
 }
 

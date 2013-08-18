@@ -22,9 +22,8 @@
 /*!
  * \file option-dialog.hh
  * \author shaoner
- * \brief
+ * \brief Dialog to configure all the settings
  */
-
 #ifndef OPTION_DIALOG_HH
 #define OPTION_DIALOG_HH
 
@@ -34,34 +33,32 @@ class Parameters;
 
 namespace Ui
 {
-    class OptionDialog;
-    class EventFormat;
+	class OptionDialog;
+	class EventFormat;
 } // namespace Ui
 
 class OptionDialog : public QDialog
 {
 
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    static OptionDialog* get();
-    static void reset();
+	static OptionDialog* get();
+	static void reset();
 private:
-    /// Ctor
-    OptionDialog();
-    /// Dtor
-    ~OptionDialog();
+	/// Ctor
+	OptionDialog();
+	/// Dtor
+	~OptionDialog();
 private slots:
-    void on_lstOptions_itemSelectionChanged();
-    void on_btnSave_clicked();
-
-    void on_comboEvent_currentIndexChanged(int index);
-
+	void on_lstOptions_itemSelectionChanged();
+	void on_btnSave_clicked();
+	void on_comboEvent_currentIndexChanged(int index);
 private:
-    static OptionDialog* _instance;
+	static OptionDialog* _instance;
 private:
-    Ui::OptionDialog* _ui;
-    Parameters* _params;
+	Ui::OptionDialog* _ui;
+	Parameters* _params;
 };
 
 #endif /* !OPTION_DIALOG_HH */

@@ -35,9 +35,9 @@ TextDisplay::TextDisplay(const QString& text, const QString& color) :
 
 TextDisplay::TextDisplay(DisplayEventType displayType)
 {
-    static Parameters* params = Parameters::get();
-    _text = params->eventFormat(displayType);
-    _color = params->eventColor(displayType);
+	static Parameters* params = Parameters::get();
+	_text = params->eventFormat(displayType);
+	_color = params->eventColor(displayType);
 }
 
 QString
@@ -56,7 +56,7 @@ TextDisplay::text() const
 		if (_text[i] == '%' && ++i < len)
 		{
 			if (_text[i] == 'n')
-                text += _nick;
+				text += _nick;
 			else if (_text[i] == 'u')
 				text += _user;
 			else if (_text[i] == 'h')
@@ -83,7 +83,7 @@ TextDisplay::text() const
 QString
 TextDisplay::link_nick(const QString& nick, const QString& tag)
 {
-    return QString("<a style=\"color: " + _color +
+	return QString("<a style=\"color: " + _color +
 				   "; text-decoration: none;\" href=\"#u_" +
 				   tag + "\">" + nick + "</a>");
 }
