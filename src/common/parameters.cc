@@ -135,7 +135,7 @@ Parameters::init_default()
 	for (int i = 0; i < PRM_NUMBER_EVT; ++i)
 	{
 		init("Format/" + _eventName[i], _eventDefaultFormat[i]);
-		init("Color/" + _eventName[i], _eventDefaultFormat[i]);
+		init("Color/" + _eventName[i], _eventDefaultColor[i]);
 		init("Enabled/" + _eventName[i], true);
 	}
 	init("Color/00", DEF_COLOR_00);
